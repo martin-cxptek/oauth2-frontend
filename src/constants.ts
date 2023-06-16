@@ -1,0 +1,1 @@
+export const GG_KEY = "GG_KEY";
