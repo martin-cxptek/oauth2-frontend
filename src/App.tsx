@@ -22,8 +22,17 @@ function App() {
     const jwtResponse = await authService.signIn(res.credential);
     
     if (jwtResponse) {
-      localStorage.setItem(GG_KEY, jwtResponse.token);
+      if (jwtResponse?.type == 'Error') {
+        alert('Login failed!');
+        setAuthenticated(false);
+        localStorage.removeItem(GG_KEY);
+        return false;
+      }
+
+      localStorage.setItem(GG_KEY, jwtResponse?.token);
       setAuthenticated(true);
+
+      return true;
     }
   }
 

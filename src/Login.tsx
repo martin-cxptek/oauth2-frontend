@@ -11,8 +11,10 @@ const Login: React.FC<LoginProps> = ({
   const navigate = useNavigate();
 
   async function internalHandleCallbackResponse(response: any) {
-    await handleCallbackResponse(response);
-    navigate("/dashboard");
+    const rs = await handleCallbackResponse(response);
+    if (rs) {
+      navigate("/dashboard");
+    }
   }
 
   useEffect(() => {

@@ -6,9 +6,15 @@ export type JwtResponse = {
   type: string;
 }
 
+export type ReponseError = {
+  code: string;
+  type: string;
+  message: string;
+}
+
 class AuthService  {
   
-   public signIn = async (id_token: string): Promise<JwtResponse> => {
+   public signIn = async (id_token: string): Promise<any> => {
     const requestOptions = {
       method: 'POST',
       headers: { 
